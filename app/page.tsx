@@ -17,7 +17,7 @@ export default async function Home() {
             </button>
           </Link>
           <small className="italic">
-            You can use "testing" and password "testing"
+            You can use testing and password testing
           </small>
         </div>
       </div>

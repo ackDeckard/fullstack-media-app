@@ -17,7 +17,7 @@ function Header() {
         <Image src="logo.svg" alt="logo" width={25} height={20} />
 
         <div className="flex items-center gap-6">
-          <Link href="/">
+          <Link href="/trending">
             <Image
               src="icon-nav-home.svg"
               alt="Return to Homepage"

@@ -1,24 +1,33 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { database } from "../firebase/firebase";
-import { QueryDocumentSnapshot, collection, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+import TrendingItems from "./TrendingItems";
+import FilterMovies from "./FilterMovies";
 
-const GetData = async ({ handleMovieData }) => {
+const GetData = ({ showTrendingItems, showMoviesByCategory }) => {
+  const [retrievedData, setRetrievedData] = useState([]);
+
   useEffect(() => {
     const getMovieData = async () => {
       try {
         const timeTrackingCollectionRef = collection(database, "items");
         const data = await getDocs(timeTrackingCollectionRef);
-        const filteredData = data.docs.map((doc: QueryDocumentSnapshot) =>
-          doc.data()
-        );
-        handleMovieData(filteredData);
+        const filteredData = data.docs.map((doc) => doc.data());
+        setRetrievedData(filteredData);
       } catch (error) {
         console.error(error);
       }
     };
     getMovieData();
   }, []);
+
+  return (
+    <div className="h-full">
+      {showTrendingItems && <TrendingItems data={retrievedData} />}
+      {showMoviesByCategory && <FilterMovies data={retrievedData} />}
+    </div>
+  );
 };
 
 export default GetData;

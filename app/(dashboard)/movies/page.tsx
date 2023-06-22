@@ -1,9 +1,15 @@
-import { FC } from "react";
+import GetData from "@/app/components/GetData";
 
-interface pageProps {}
+const Movies = ({ props }) => {
+  console.log(props);
 
-const page: FC<pageProps> = ({}) => {
-  return <div>Movies page</div>;
+  return (
+    <div className="h-screen bg-backgroundColor pl-4 text-xl">
+      <div className="text-white">Trending</div>
+
+      <GetData showTrendingItems={false} showMoviesByCategory={true} />
+    </div>
+  );
 };
 
-export default page;
+export default Movies;
