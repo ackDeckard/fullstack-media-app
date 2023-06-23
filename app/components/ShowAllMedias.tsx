@@ -1,10 +1,26 @@
 import React from "react";
 
-const ShowAllMedias = ({ data }) => {
+type MediaType = {
+  title: String;
+  image: String;
+  year: React.ReactNode;
+  category: String;
+  rating: String;
+  isBookmarked: boolean;
+  isTrending: boolean;
+};
+
+type PropsType = {
+  data: MediaType[];
+};
+
+const ShowAllMedias = ({ data }: PropsType) => {
+  const id = React.useId();
+
   return (
     <section className="gap-y- mb-4 grid h-full grid-cols-2 gap-x-1">
       {data.map((item) => (
-        <div key={item.title + item.year}>
+        <div key={id + item.title}>
           <div
             className="h-[110px] w-[164px] rounded-lg bg-white"
             style={{
