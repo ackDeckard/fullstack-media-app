@@ -12,8 +12,8 @@ import Link from "next/link";
 
 function Header() {
   return (
-    <header>
-      <div className="flex h-[56px] items-center justify-between bg-bgSignInOutNavBarColor  p-4">
+    <header className=" bg-backgroundColor md:flex md:flex-col md:pt-4">
+      <div className="flex h-[56px] items-center justify-between rounded-[10px] bg-bgSignInOutNavBarColor p-4 md:mx-auto   md:h-[72px] md:w-[719px] ">
         <Image src="logo.svg" alt="logo" width={25} height={20} />
 
         <div className="flex items-center gap-6">
@@ -45,9 +45,6 @@ function Header() {
           <UserButton afterSignOutUrl="/" />
         </SignedIn>
       </div>
-
-      <SearchBar />
-      <SignedOut></SignedOut>
     </header>
   );
 }
