@@ -7,16 +7,15 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/nextjs";
-import SearchBar from "./SearchBar";
 import Link from "next/link";
 
 function Header() {
   return (
-    <header className=" bg-backgroundColor md:flex md:flex-col md:pt-4">
-      <div className="flex h-[56px] items-center justify-between rounded-[10px] bg-bgSignInOutNavBarColor p-4 md:mx-auto   md:h-[72px] md:w-[719px] ">
+    <header className=" bg-backgroundColor lg:row-span-2  lg:p-8 ">
+      <div className="flex h-[56px] items-center justify-between rounded-[10px] bg-bgSignInOutNavBarColor p-4 md:mx-auto md:h-[72px] md:w-[719px] lg:fixed lg:h-[90%] lg:w-[96px] lg:flex-col">
         <Image src="logo.svg" alt="logo" width={25} height={20} />
 
-        <div className="flex items-center gap-6">
+        <nav className="flex items-center gap-6 lg:flex-col">
           <Link href="/trending">
             <Image
               src="icon-nav-home.svg"
@@ -39,7 +38,7 @@ function Header() {
           <Link href="/bookmarks">
             <Image src="icon-nav-bookmark.svg" alt="" width={16} height={16} />
           </Link>
-        </div>
+        </nav>
 
         <SignedIn>
           <UserButton afterSignOutUrl="/" />
