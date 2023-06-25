@@ -1,18 +1,16 @@
 import GetData from "@/app/components/GetData";
 
-const TrendingPage = ({ props }) => {
-  console.log(props);
-
+const TrendingPage = () => {
   return (
-    <div>
+    <div className="lg:col-start-2 lg:h-[90%] lg:pt-8">
       <div className="bg-backgroundColor pl-4 text-xl">
-        <div className="text-white">Trending</div>
+        <div className="pb-4 tracking-tight text-white">Trending</div>
 
-        <GetData
+        {/* <GetData
           showTrendingItems={true}
           showMoviesByCategory={false}
           showAll={false}
-        />
+        /> */}
       </div>
       <div className="bg-backgroundColor pl-4 text-xl">
         <div className="text-white">Recommended for you</div>
