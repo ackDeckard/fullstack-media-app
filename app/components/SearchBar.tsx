@@ -15,7 +15,7 @@ const SearchBar: FC = () => {
   };
 
   return (
-    <section className="relative w-full bg-backgroundColor px-4 py-6">
+    <section className="relative w-full bg-backgroundColor px-4 py-6 lg:col-start-2 lg:row-start-1">
       <form action="" onSubmit={onSearch}>
         <input
           value={searchQuery}
