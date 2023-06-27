@@ -47,7 +47,7 @@ const ClickAndDragWithMouse = ({ className = "", children }) => {
       onMouseUp={handleDragEnd}
       onMouseMove={handleDrag}
       className={className}
-      style={{ cursor: isMouseDown ? "grabbing" : "default" }}
+      style={{ cursor: isMouseDown ? "cursor-grab" : "default" }}
     >
       {children}
     </div>
