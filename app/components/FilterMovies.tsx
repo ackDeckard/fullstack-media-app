@@ -4,7 +4,7 @@ const FilterMovies = ({ data }) => {
   const moviesByCategory = data.filter((item) => item.category === "Movie");
 
   return (
-    <section className="grid h-full grid-cols-2 gap-4">
+    <section className="grid  grid-cols-2 gap-4 lg:grid-cols-4 ">
       {moviesByCategory.map((item) => (
         <div
           key={item.title + item.year}

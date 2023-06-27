@@ -20,10 +20,13 @@ const ShowAllMedias = ({ data }: PropsType) => {
 
   return (
     // <section className="mb-4 grid grid-cols-2 gap-x-1 md:grid-cols-3 lg:grid-cols-4 lg:gap-7">
-    <section className=" mb-4 md:grid md:grid-cols-3 lg:grid-cols-4">
-      {data.map((item) => (
-        <MediaCard key={id + item.title} />
-      ))}
+    <section className=" mb-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {data.map((item) => {
+        if (!item.isTrending) {
+          return <MediaCard key={id + item.title} props={item} />;
+        }
+        return null;
+      })}
     </section>
   );
 };

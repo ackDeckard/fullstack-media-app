@@ -23,8 +23,8 @@ const TrendingItems = ({ data }: PropsType) => {
   const id = React.useId();
 
   return (
-    <ClickAndDragWithMouse className={"drag"} innerRef={journalRef}>
-      <section className="grid h-[160px]  grid-flow-col gap-4 overflow-x-scroll  rounded-lg md:h-[260px]">
+    <ClickAndDragWithMouse innerRef={journalRef}>
+      <section className="grid h-[160px] grid-flow-col gap-4 overflow-x-auto  rounded-lg md:h-[260px]">
         {trendingItems.map((item) => (
           <div
             key={id + item.title}

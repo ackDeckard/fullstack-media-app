@@ -14,153 +14,33 @@ type PropsType = {
   showAll: boolean;
 };
 
-const Data = [
-  {
-    title: "Beyond Earth",
-    image: "steam.jpg",
-    year: 2019,
-    category: "Movie",
-    rating: "PG",
-    isBookmarked: false,
-    isTrending: true,
-  },
-  {
-    title: "Beyond Earth",
-    image: "steam.jpg",
-    year: 2019,
-    category: "Movie",
-    rating: "PG",
-    isBookmarked: false,
-    isTrending: true,
-  },
-  {
-    title: "Beyond Earth",
-    image: "steam.jpg",
-    year: 2019,
-    category: "Movie",
-    rating: "PG",
-    isBookmarked: false,
-    isTrending: true,
-  },
-  {
-    title: "Beyond Earth",
-    image: "steam.jpg",
-    year: 2019,
-    category: "Movie",
-    rating: "PG",
-    isBookmarked: false,
-    isTrending: true,
-  },
-  {
-    title: "Beyond Earth",
-    image: "steam.jpg",
-    year: 2019,
-    category: "Movie",
-    rating: "PG",
-    isBookmarked: false,
-    isTrending: true,
-  },
-  {
-    title: "Beyond Earth",
-    image: "steam.jpg",
-    year: 2019,
-    category: "Movie",
-    rating: "PG",
-    isBookmarked: false,
-    isTrending: true,
-  },
-  {
-    title: "Beyond Earth",
-    image: "steam.jpg",
-    year: 2019,
-    category: "Movie",
-    rating: "PG",
-    isBookmarked: false,
-    isTrending: true,
-  },
-  {
-    title: "Beyond Earth",
-    image: "steam.jpg",
-    year: 2019,
-    category: "Movie",
-    rating: "PG",
-    isBookmarked: false,
-    isTrending: true,
-  },
-  {
-    title: "Beyond Earth",
-    image: "steam.jpg",
-    year: 2019,
-    category: "Movie",
-    rating: "PG",
-    isBookmarked: false,
-    isTrending: true,
-  },
-  {
-    title: "Beyond Earth",
-    image: "steam.jpg",
-    year: 2019,
-    category: "Movie",
-    rating: "PG",
-    isBookmarked: false,
-    isTrending: true,
-  },
-  {
-    title: "Beyond Earth",
-    image: "steam.jpg",
-    year: 2019,
-    category: "Movie",
-    rating: "PG",
-    isBookmarked: false,
-    isTrending: true,
-  },
-  {
-    title: "Beyond Earth",
-    image: "steam.jpg",
-    year: 2019,
-    category: "Movie",
-    rating: "PG",
-    isBookmarked: false,
-    isTrending: true,
-  },
-  {
-    title: "Beyond Earth",
-    image: "steam.jpg",
-    year: 2019,
-    category: "Movie",
-    rating: "PG",
-    isBookmarked: false,
-    isTrending: true,
-  },
-];
-
 const GetData = ({
   showTrendingItems,
   showMoviesByCategory,
   showTvSeries,
   showAll,
 }: PropsType) => {
-  const [retrievedData, setRetrievedData] = useState(Data);
+  const [retrievedData, setRetrievedData] = useState([]);
   const [isDataFetched, setIsDataFetched] = useState(false);
 
-  console.log("got data", retrievedData);
+  useEffect(() => {
+    if (!isDataFetched) {
+      console.log("How many times im here");
 
-  // useEffect(() => {
-  //   if (!isDataFetched) {
-  //     const getMovieData = async () => {
-  //       try {
-  //         const timeTrackingCollectionRef = collection(database, "items");
-  //         const data = await getDocs(timeTrackingCollectionRef);
-  //         const filteredData = data.docs.map((doc) => doc.data());
-  //         if (filteredData) setRetrievedData(filteredData);
-  //         setIsDataFetched(true);
-  //       } catch (error) {
-  //         console.error(error);
-  //       }
-  //     };
-  //     getMovieData();
-  //   }
-  // }, [isDataFetched]);
+      const getMovieData = async () => {
+        try {
+          const timeTrackingCollectionRef = collection(database, "items");
+          const data = await getDocs(timeTrackingCollectionRef);
+          const filteredData = data.docs.map((doc) => doc.data());
+          if (filteredData) setRetrievedData(filteredData);
+          setIsDataFetched(true);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      getMovieData();
+    }
+  }, []);
 
   return (
     <div className="h-full">
