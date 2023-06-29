@@ -1,23 +1,24 @@
 "use client";
-import { useSearchParams } from "next/navigation";
-import Header from "../../components/Header";
-import AddDataFirebase from "@/app/components/AddData";
+import MediaCard from "@/app/components/MediaCard";
+import { DataContext } from "@/app/context/DataFetchingContext";
+import { useRouter } from "next/router";
+import React, { useContext, useEffect, useState } from "react";
 
-const Search = () => {
-  const search = useSearchParams();
+const SearchPage = () => {
+  const { filteredData } = useContext(DataContext);
+  const id = React.useId();
 
-  const searchQuery = search ? search.get("q") : null;
-
-  const encodedSearchQuery = encodeURI(searchQuery || "");
-
-  console.log("Search", encodedSearchQuery);
+  console.log("What did come from ", filteredData);
 
   return (
-    <section>
-      <Header />
-      Search page
-    </section>
+    <>
+      <section className="mb-4 grid h-screen grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {filteredData.map((item) => {
+          return <MediaCard key={id + item.title} props={item} />;
+        })}
+      </section>
+    </>
   );
 };
 
-export default Search;
+export default SearchPage;
