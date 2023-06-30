@@ -1,15 +1,24 @@
 "use client";
 import { collection, addDoc } from "firebase/firestore";
-import { useState } from "react";
 import { database } from "../firebase/firebase";
+
+type PropsType = {
+  title: string;
+  image: string;
+  year: number;
+  category: string;
+  rating: number;
+  isBookmarked: boolean;
+  isTrending: boolean;
+};
 
 const AddDataFirebase = () => {
   // const [item, setitem] = useState();
 
-  const AddItems = async (e) => {
+  const AddItems = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    async (item) => {
+    async (item: PropsType) => {
       await addDoc(collection(database, "items"), {
         title: item.title,
         image: item.image,

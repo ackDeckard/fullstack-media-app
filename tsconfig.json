@@ -29,7 +29,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/firebase/firebase.tjs"
+    "app/firebase/firebase.tjs",
+    "app/components/ClickAndDragWithMouse.jsx"
   ],
   "exclude": ["node_modules"]
 }

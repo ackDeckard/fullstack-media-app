@@ -1,13 +1,15 @@
 import React, { useRef, useState } from "react";
 import SmallCircle from "@/app/components/SmallCircle";
 import ClickAndDragWithMouse from "./ClickAndDragWithMouse";
+import ClickAndBookMark from "./ClickAndBookmark";
 
 type MediaType = {
-  title: String;
-  image: String;
+  id: string;
+  title: string;
+  image: string;
   year: React.ReactNode;
-  category: String;
-  rating: String;
+  category: string;
+  rating: string;
   isBookmarked: boolean;
   isTrending: boolean;
 };
@@ -23,12 +25,12 @@ const TrendingItems = ({ data }: PropsType) => {
   const id = React.useId();
 
   return (
-    <ClickAndDragWithMouse innerRef={journalRef}>
+    <ClickAndDragWithMouse>
       <section className="grid h-[160px] grid-flow-col gap-4 overflow-x-auto  rounded-lg md:h-[260px]">
         {trendingItems.map((item) => (
           <div
             key={id + item.title}
-            className="h-[140px] w-[240px] cursor-[grab] rounded-lg  bg-bgSignInOutNavBarColor duration-300 ease-in-out hover:scale-105 md:h-[230px] md:w-[470px]"
+            className=" relative h-[140px] w-[240px]  cursor-[grab] rounded-lg bg-bgSignInOutNavBarColor duration-300 ease-in-out hover:scale-105 md:h-[230px] md:w-[470px]"
             style={{
               backgroundImage: `url(${item.image})`,
               backgroundPosition: "center",
@@ -37,6 +39,7 @@ const TrendingItems = ({ data }: PropsType) => {
               backgroundRepeat: "no-repeat",
             }}
           >
+            {/* <ClickAndBookMark id={item.id} isBookmarked={item.isBookmarked} /> */}
             <div className="grid h-full grid-rows-[1fr_min-content]">
               <div />
               <div className="pb-4 pl-4">

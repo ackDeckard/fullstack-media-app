@@ -18,12 +18,12 @@ const ClickAndDragWithMouse = ({ className = "", children }) => {
     const startY = e.pageY - offsetTop;
     mouseCoords.current = { startX, startY, scrollLeft, scrollTop };
     setIsMouseDown(true);
-    document.body.style.cursor = "grabbing";
+    // document.body.style.cursor = "grabbing";
   };
 
   const handleDragEnd = () => {
     setIsMouseDown(false);
-    document.body.style.cursor = "default";
+    //document.body.style.cursor = "default";
   };
 
   const handleDrag = (e) => {
@@ -47,7 +47,7 @@ const ClickAndDragWithMouse = ({ className = "", children }) => {
       onMouseUp={handleDragEnd}
       onMouseMove={handleDrag}
       className={className}
-      style={{ cursor: isMouseDown ? "cursor-grab" : "default" }}
+      // style={{ cursor: isMouseDown ? "cursor-grab" : "default" }}
     >
       {children}
     </div>

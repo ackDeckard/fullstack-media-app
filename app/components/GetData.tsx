@@ -1,17 +1,17 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { database } from "../firebase/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import React, { useContext } from "react";
 import TrendingItems from "./TrendingItems";
-import FilterMovies from "./FilterMovies";
 import ShowAllMedias from "./ShowAllMedias";
-import FilterTvSeries from "./FilterTvSeries";
+import { DataContext } from "../context/DataFetchingContext";
+import FilterMedia from "./FilterMedia";
 
 type PropsType = {
   showTrendingItems: boolean;
   showMoviesByCategory: boolean;
   showTvSeries: boolean;
   showAll: boolean;
+  showBookMarked: boolean;
+  filterType?: string;
 };
 
 const GetData = ({
@@ -19,35 +19,24 @@ const GetData = ({
   showMoviesByCategory,
   showTvSeries,
   showAll,
+  showBookMarked,
+  filterType,
 }: PropsType) => {
-  const [retrievedData, setRetrievedData] = useState([]);
-  const [isDataFetched, setIsDataFetched] = useState(false);
-
-  useEffect(() => {
-    if (!isDataFetched) {
-      console.log("How many times im here");
-
-      const getMovieData = async () => {
-        try {
-          const timeTrackingCollectionRef = collection(database, "items");
-          const data = await getDocs(timeTrackingCollectionRef);
-          const filteredData = data.docs.map((doc) => doc.data());
-          if (filteredData) setRetrievedData(filteredData);
-          setIsDataFetched(true);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      getMovieData();
-    }
-  }, []);
+  const { retrievedData } = useContext(DataContext);
 
   return (
-    <div className="h-full">
+    <div>
       {showTrendingItems && <TrendingItems data={retrievedData} />}
-      {showMoviesByCategory && <FilterMovies data={retrievedData} />}
-      {showTvSeries && <FilterTvSeries data={retrievedData} />}
       {showAll && <ShowAllMedias data={retrievedData} />}
+      {showMoviesByCategory && (
+        <FilterMedia data={retrievedData} filterType={"Movie"} />
+      )}
+      {showTvSeries && (
+        <FilterMedia data={retrievedData} filterType={"TV Series"} />
+      )}
+      {showBookMarked && (
+        <FilterMedia data={retrievedData} filterType={"Bookmarked"} />
+      )}
     </div>
   );
 };

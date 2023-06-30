@@ -23,27 +23,24 @@ export const DataContext = createContext<DataContextType>({
 
 export const DataFetchingProvider = ({ children }: PropsType) => {
   const [retrievedData, setRetrievedData] = useState<any[]>([]);
-  const [isDataFetched, setIsDataFetched] = useState(false);
+
   const [filteredData, setFilteredData] = useState<any[]>([]);
 
   useEffect(() => {
-    if (!isDataFetched) {
-      const getMediaItems = async () => {
-        try {
-          const timeTrackingCollectionRef = collection(database, "items");
-          const data = await getDocs(timeTrackingCollectionRef);
-          const filteredData = data.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          }));
-          if (filteredData) setRetrievedData(filteredData);
-          setIsDataFetched(true);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      getMediaItems();
-    }
+    const getMediaItems = async () => {
+      try {
+        const timeTrackingCollectionRef = collection(database, "items");
+        const data = await getDocs(timeTrackingCollectionRef);
+        const filteredData = data.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        if (filteredData) setRetrievedData(filteredData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getMediaItems();
   }, []);
 
   const updateData = (updatedItem: any) => {

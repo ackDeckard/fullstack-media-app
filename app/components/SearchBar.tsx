@@ -1,21 +1,30 @@
 "use client";
-import { FC, useState } from "react";
+import { FC, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { DataContext } from "../context/DataFetchingContext";
 
 const SearchBar: FC = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const { retrievedData, updateFilteredData } = useContext(DataContext);
+
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const router = useRouter();
 
-  const onSearch = (event: React.FormEvent) => {
+  const onSearch = async (event: React.FormEvent) => {
     event.preventDefault();
+    const normalizedQuery = searchQuery.toLowerCase();
+    const filteredData = retrievedData.filter((item) =>
+      item.title.toLowerCase().includes(normalizedQuery)
+    );
 
-    const encodedSearchQuery = encodeURI(searchQuery);
-    router.push(`/search?q=${encodedSearchQuery}`);
+    updateFilteredData(filteredData);
+    setSearchQuery("");
+
+    router.push("/search");
   };
 
   return (
-    <section className="relative w-full bg-backgroundColor px-4 py-6 lg:col-start-2 lg:row-start-1 lg:mt-8">
+    <section className="relative w-full bg-backgroundColor px-4 py-6 lg:col-start-2 lg:row-start-1 lg:mt-8 ">
       <form action="" onSubmit={onSearch}>
         <input
           value={searchQuery}

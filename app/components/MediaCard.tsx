@@ -1,13 +1,28 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import SmallCircle from "./SmallCircle";
+import ClickAndBookMark from "./ClickAndBookmark";
 
-const MediaCard = ({ props }) => {
-  const { image, year, rating, category, title } = props;
+type PropsType = {
+  data: {
+    id: string;
+    image: string;
+    year: ReactNode;
+    rating: ReactNode;
+    category: string;
+    title: string;
+    isBookmarked: boolean;
+  };
+};
+
+const MediaCard = ({ data }: PropsType) => {
+  const { id, image, year, rating, category, title, isBookmarked } = data;
+
+  console.log("a imagem", image);
 
   return (
     <div>
       <div
-        className="mb-2 h-[110px] w-[164px] cursor-pointer   rounded-lg bg-bgSignInOutNavBarColor duration-300 ease-in-out hover:scale-105 md:h-[140px] md:w-[220px] lg:h-[174px] lg:w-[280px]"
+        className="relative mb-2 h-[110px] w-[164px] rounded-lg bg-bgSignInOutNavBarColor duration-300 ease-in-out hover:scale-105 md:h-[140px] md:w-[220px] lg:h-[174px] lg:w-[280px]"
         style={{
           backgroundImage: `url(${image})`,
           backgroundPosition: "center",
@@ -15,7 +30,9 @@ const MediaCard = ({ props }) => {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
-      ></div>
+      >
+        <ClickAndBookMark id={id} isBookmarked={isBookmarked} />
+      </div>
 
       <div className="pb-4 ">
         <div className="flex text-xs font-light text-white/75 md:text-[13px]">
