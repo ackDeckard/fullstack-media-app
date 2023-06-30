@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         backgroundColor: "hsl(224, 30%, 9%)",
         bgSignInOutNavBarColor: "hsl(223, 36%, 13%)",
+        buttonLoginColor: "hsl(0, 97%, 63%)",
       },
     },
   },

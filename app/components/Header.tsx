@@ -12,7 +12,7 @@ import Link from "next/link";
 function Header() {
   return (
     <header className="bg-backgroundColor  lg:row-span-2 lg:p-8">
-      <div className="flex h-[56px] items-center justify-between bg-bgSignInOutNavBarColor p-4 md:mx-auto md:mt-5 md:h-[72px] md:w-[719px] md:rounded-[10px] lg:fixed lg:h-[90%] lg:w-[96px] lg:flex-col ">
+      <div className="flex h-[56px] items-center justify-between bg-bgSignInOutNavBarColor  p-4 md:mx-auto md:mt-5 md:h-[72px] md:w-[719px] md:rounded-[10px] lg:fixed lg:h-[90%] lg:w-[96px] lg:flex-col ">
         <Link href="/trending" className="cursor-pointer">
           <Image src="logo.svg" alt="logo" width={25} height={20} />
         </Link>

@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import SmallCircle from "./SmallCircle";
 import ClickAndBookMark from "./ClickAndBookmark";
+import PlayMedia from "./PlayMedia";
 
 type MediaType = {
   id: string;
@@ -36,6 +37,7 @@ const MediaCard = ({
         }}
       >
         <ClickAndBookMark id={id} isBookmarked={isBookmarked} />
+        {/* {category === "Movie" ? <PlayMedia /> : ""} */}
       </div>
 
       <div className="pb-4 ">

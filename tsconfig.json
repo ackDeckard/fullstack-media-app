@@ -30,7 +30,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/firebase/firebase.tjs",
-    "app/components/ClickAndDragWithMouse.jsx"
+    "app/components/ClickAndDragWithMouse.jsx",
+    "app/components/PlayMedia.jsx"
   ],
   "exclude": ["node_modules"]
 }
