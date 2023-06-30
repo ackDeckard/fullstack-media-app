@@ -21,7 +21,11 @@ const ShowAllMedias = ({ data }: { data: MediaType[] }) => {
     <section className=" mb-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {data.map((item) => {
         if (!item.isTrending) {
-          return <MediaCard key={item.id} data={item} />;
+          return (
+            <div key={item.id}>
+              <MediaCard {...item} />
+            </div>
+          );
         }
         return null;
       })}

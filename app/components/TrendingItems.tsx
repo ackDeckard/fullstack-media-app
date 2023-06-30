@@ -39,7 +39,7 @@ const TrendingItems = ({ data }: PropsType) => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            {/* <ClickAndBookMark id={item.id} isBookmarked={item.isBookmarked} /> */}
+            <ClickAndBookMark id={item.id} isBookmarked={item.isBookmarked} />
             <div className="grid h-full grid-rows-[1fr_min-content]">
               <div />
               <div className="pb-4 pl-4">

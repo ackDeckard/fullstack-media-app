@@ -36,7 +36,9 @@ const FilterMedia = ({ data, filterType }: PropsType) => {
   return (
     <section className=" mb-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {filteredData.map((item) => (
-        <MediaCard key={item.id} data={item} />
+        <div key={item.id}>
+          <MediaCard {...item} />
+        </div>
       ))}
     </section>
   );

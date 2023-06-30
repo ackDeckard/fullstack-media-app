@@ -2,25 +2,29 @@ import React, { ReactNode } from "react";
 import SmallCircle from "./SmallCircle";
 import ClickAndBookMark from "./ClickAndBookmark";
 
-type PropsType = {
-  data: {
-    id: string;
-    image: string;
-    year: ReactNode;
-    rating: ReactNode;
-    category: string;
-    title: string;
-    isBookmarked: boolean;
-  };
+type MediaType = {
+  id: string;
+  title: string;
+  image: string;
+  year: ReactNode;
+  category: string;
+  rating: ReactNode;
+  isBookmarked: boolean;
+  isTrending: boolean;
+  filterType?: string;
 };
 
-const MediaCard = ({ data }: PropsType) => {
-  const { id, image, year, rating, category, title, isBookmarked } = data;
-
-  console.log("a imagem", image);
-
+const MediaCard = ({
+  id,
+  image,
+  year,
+  rating,
+  category,
+  title,
+  isBookmarked,
+}: MediaType) => {
   return (
-    <div>
+    <article>
       <div
         className="relative mb-2 h-[110px] w-[164px] rounded-lg bg-bgSignInOutNavBarColor duration-300 ease-in-out hover:scale-105 md:h-[140px] md:w-[220px] lg:h-[174px] lg:w-[280px]"
         style={{
@@ -46,7 +50,7 @@ const MediaCard = ({ data }: PropsType) => {
           {title}
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

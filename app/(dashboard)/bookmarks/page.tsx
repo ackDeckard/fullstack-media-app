@@ -6,7 +6,6 @@ import React, { useContext } from "react";
 
 const BookMarks = () => {
   const { retrievedData } = useContext(DataContext);
-  //const id = React.useId();
 
   const bookmarkedMovies = retrievedData.filter(
     (item) => item.category === "Movie" && item.isBookmarked
@@ -14,6 +13,9 @@ const BookMarks = () => {
   const bookmarkedTVSeries = retrievedData.filter(
     (item) => item.category === "TV Series" && item.isBookmarked
   );
+
+  console.log("Aqui no bookmarks tem id? ", bookmarkedMovies);
+  console.log("Aqui no bookmarks tem id? ", bookmarkedTVSeries);
 
   return (
     <section className="h-screen bg-backgroundColor pl-4 text-xl  lg:col-start-2">
@@ -38,11 +40,13 @@ const BookMarks = () => {
             : "Bookmarked Movie"}
         </div>
       )}
-      <article className="grid grid-cols-2 gap-8 bg-backgroundColor md:grid-cols-3 lg:grid-cols-4">
-        {bookmarkedMovies.map((item) => {
-          return <MediaCard key={item.id} {...item} />;
-        })}
-      </article>
+      <section className="grid grid-cols-2 gap-8 bg-backgroundColor md:grid-cols-3 lg:grid-cols-4">
+        {bookmarkedMovies.map((item) => (
+          <div key={item.id}>
+            <MediaCard {...item} />
+          </div>
+        ))}
+      </section>
 
       {bookmarkedTVSeries.length > 0 && (
         <div className="mb-[25px] text-white">
@@ -52,9 +56,11 @@ const BookMarks = () => {
         </div>
       )}
       <article className="grid grid-cols-2 gap-8 bg-backgroundColor md:grid-cols-3 lg:grid-cols-4">
-        {bookmarkedTVSeries.map((item) => {
-          return <MediaCard key={item.id} {...item} />;
-        })}
+        {bookmarkedTVSeries.map((item) => (
+          <div key={item.id}>
+            <MediaCard {...item} />
+          </div>
+        ))}
       </article>
     </section>
   );
