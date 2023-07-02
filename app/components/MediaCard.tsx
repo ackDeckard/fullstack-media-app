@@ -1,7 +1,8 @@
 import React, { ReactNode } from "react";
 import SmallCircle from "./SmallCircle";
 import ClickAndBookMark from "./ClickAndBookmark";
-import PlayMedia from "./PlayMedia";
+import PlayMedia from "./VideoPlayButton";
+import VideoPlayButton from "./VideoPlayButton";
 
 type MediaType = {
   id: string;
@@ -27,7 +28,7 @@ const MediaCard = ({
   return (
     <article>
       <div
-        className="relative mb-2 h-[110px] w-[164px] rounded-lg bg-bgSignInOutNavBarColor duration-300 ease-in-out hover:scale-105 md:h-[140px] md:w-[220px] lg:h-[174px] lg:w-[280px]"
+        className="peer relative z-10 mb-2 grid h-[110px] w-[164px] place-items-center rounded-lg bg-bgSignInOutNavBarColor duration-300 ease-in-out hover:scale-105 md:h-[140px] md:w-[220px] lg:h-[174px] lg:w-[280px] [&>*:first-child]:invisible [&>*:first-child]:hover:visible"
         style={{
           backgroundImage: `url(${image})`,
           backgroundPosition: "center",
@@ -36,8 +37,10 @@ const MediaCard = ({
           backgroundRepeat: "no-repeat",
         }}
       >
+        <div className="">
+          {category === "Movie" ? <VideoPlayButton /> : ""}
+        </div>
         <ClickAndBookMark id={id} isBookmarked={isBookmarked} />
-        {/* {category === "Movie" ? <PlayMedia /> : ""} */}
       </div>
 
       <div className="pb-4 ">

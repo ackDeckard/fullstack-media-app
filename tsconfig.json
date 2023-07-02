@@ -31,7 +31,7 @@
     ".next/types/**/*.ts",
     "app/firebase/firebase.tjs",
     "app/components/ClickAndDragWithMouse.jsx",
-    "app/components/PlayMedia.jsx"
+    "app/components/VideoPlayButton.jsx"
   ],
   "exclude": ["node_modules"]
 }
