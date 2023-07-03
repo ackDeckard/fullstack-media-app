@@ -23,6 +23,11 @@ const StartVideo = ({ isDialogOpen, setIsDialogOpen }) => {
   const handleMouseLeave = (event) => {
     const isInsideDialog = dialogRef.current.contains(event.target);
     if (!isInsideDialog) {
+      const video = videoRef.current;
+      if (video && !video.paused) {
+        video.pause();
+        setIsPlaying(false);
+      }
       setIsDialogOpen(false);
     }
   };
@@ -51,7 +56,14 @@ const StartVideo = ({ isDialogOpen, setIsDialogOpen }) => {
       onClick={handleClick}
       className="absolute z-50 grid h-[110px] w-[164px] place-items-center rounded-xl md:h-[140px] md:w-[220px] lg:h-[174px] lg:w-[280px]"
     >
-      <video ref={videoRef} src={url} autoPlay controls />
+      <video
+        ref={videoRef}
+        src={url}
+        className="absolute h-full w-full overflow-hidden rounded-xl "
+        autoPlay
+        controls
+        muted
+      />
     </dialog>
   );
 };

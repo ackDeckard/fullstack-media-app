@@ -28,7 +28,7 @@ const MediaCard = ({
   return (
     <article>
       <div
-        className="peer relative z-10 mb-2 grid h-[110px] w-[164px] place-items-center rounded-lg bg-bgSignInOutNavBarColor duration-300 ease-in-out hover:scale-105 md:h-[140px] md:w-[220px] lg:h-[174px] lg:w-[280px] [&>*:first-child]:invisible [&>*:first-child]:hover:visible"
+        className="peer relative z-10 mb-2 grid h-[110px] w-[164px] place-items-center rounded-lg bg-bgSignInOutNavBarColor duration-300 ease-in-out hover:scale-105 md:h-[140px] md:w-[220px] lg:h-[174px] lg:w-[280px] [&>*:first-child]:invisible [&>*:first-child]:hover:visible [&>*:first-child]:hover:duration-1000"
         style={{
           backgroundImage: `url(${image})`,
           backgroundPosition: "center",
