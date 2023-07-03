@@ -54,7 +54,7 @@ const StartVideo = ({ isDialogOpen, setIsDialogOpen }) => {
       ref={dialogRef}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
-      className="absolute z-50 grid h-[110px] w-[164px] place-items-center rounded-xl md:h-[140px] md:w-[220px] lg:h-[174px] lg:w-[280px]"
+      className="absolute z-50 grid h-full w-full place-items-center rounded-xl"
     >
       <video
         ref={videoRef}

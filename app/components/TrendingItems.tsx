@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import SmallCircle from "@/app/components/SmallCircle";
 import ClickAndDragWithMouse from "./ClickAndDragWithMouse";
 import ClickAndBookMark from "./ClickAndBookmark";
+import VideoPlayButton from "./VideoPlayButton";
 
 type MediaType = {
   id: string;
@@ -30,7 +31,7 @@ const TrendingItems = ({ data }: PropsType) => {
         {trendingItems.map((item) => (
           <div
             key={id + item.title}
-            className=" relative h-[140px] w-[240px]  cursor-[grab] rounded-lg bg-bgSignInOutNavBarColor duration-300 ease-in-out hover:scale-105 md:h-[230px] md:w-[470px]"
+            className=" relative h-[140px] w-[240px]  cursor-[grab] rounded-lg bg-bgSignInOutNavBarColor duration-300 ease-in-out hover:scale-105 md:h-[230px] md:w-[470px] [&>*:first-child]:invisible [&>*:first-child]:hover:visible [&>*:first-child]:hover:duration-1000"
             style={{
               backgroundImage: `url(${item.image})`,
               backgroundPosition: "center",
@@ -39,6 +40,11 @@ const TrendingItems = ({ data }: PropsType) => {
               backgroundRepeat: "no-repeat",
             }}
           >
+            <div className="absolute">
+              <div className="grid h-[140px] w-[240px] place-items-center md:h-[230px]  md:w-[470px]">
+                {item.category === "Movie" ? <VideoPlayButton /> : ""}
+              </div>
+            </div>
             <ClickAndBookMark id={item.id} isBookmarked={item.isBookmarked} />
             <div className="grid h-full grid-rows-[1fr_min-content]">
               <div />

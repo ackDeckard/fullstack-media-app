@@ -13,17 +13,19 @@ const VideoPlayButton = () => {
   return (
     <div
       onClick={toggleDialog}
-      className="flex h-[48px] w-[117px] items-center justify-between rounded-[28px] bg-white/25 px-4 hover:cursor-pointer"
+      className="flex h-[20px] w-[77px] items-center justify-between rounded-[28px] bg-white/25 px-4 hover:cursor-pointer md:h-[48px] md:w-[117px]"
     >
       <Image
         src="/icon-play.svg"
         alt=""
         width={0}
         height={0}
-        className="h-[30px] w-[30px]"
+        className="h-[15px] w-[15px] md:h-[30px] md:w-[30px]"
       />
 
-      <button>{isDialogOpen ? "Pause" : "Play"}</button>
+      <button className="text-xs text-white md:text-lg">
+        {isDialogOpen ? "Pause" : "Play"}
+      </button>
       {isDialogOpen && (
         <StartVideo
           isDialogOpen={isDialogOpen}

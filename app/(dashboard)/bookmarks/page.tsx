@@ -14,11 +14,8 @@ const BookMarks = () => {
     (item) => item.category === "TV Series" && item.isBookmarked
   );
 
-  console.log("Aqui no bookmarks tem id? ", bookmarkedMovies);
-  console.log("Aqui no bookmarks tem id? ", bookmarkedTVSeries);
-
   return (
-    <section className="h-screen bg-backgroundColor pl-4 text-xl  lg:col-start-2">
+    <section className=" h-screen bg-backgroundColor pl-6 text-xl  lg:col-start-2">
       {bookmarkedMovies.length === 0 && bookmarkedTVSeries.length === 0 && (
         <div className="text-white">
           No media added to the bookmarks. You can add a bookmark by clicking in
